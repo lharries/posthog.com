@@ -13,7 +13,7 @@ import TestimonialsTable from 'components/TestimonialsTable'
 import { ZoomImage } from 'components/ZoomImage'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { animateScroll as scroll } from 'react-scroll'
 import { shortcodes } from '../mdxGlobalComponents'
 import MobileSidebar from 'components/Docs/MobileSidebar'
@@ -61,12 +61,11 @@ export const HandbookSidebar = ({ contributors, title, location, related }) => {
 }
 
 export default function Handbook({
-    data: { post, countries, nextPost },
+    data: { post, nextPost },
     pageContext: { menu, breadcrumb = [], breadcrumbBase, tableOfContents },
     location,
 }) {
     const { hash } = useLocation()
-    const [menuOpen, setMenuOpen] = useState(false)
     const {
         body,
         frontmatter,
@@ -114,10 +113,6 @@ export default function Handbook({
         a: A,
         TestimonialsTable,
         ...shortcodes,
-    }
-
-    const handleMobileMenuClick = () => {
-        setMenuOpen(!menuOpen)
     }
 
     useEffect(() => {
